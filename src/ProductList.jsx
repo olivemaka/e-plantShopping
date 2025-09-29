@@ -16,6 +16,7 @@ function ProductList({ onHomeClick }) {
             [product.name]: true, // Set the current product's name as a key with value 'true' to mark it as added
         }));
     };
+
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -263,6 +264,7 @@ function ProductList({ onHomeClick }) {
         e.preventDefault();
         setShowCart(false);
     };
+
     return (
         <div>
             <div className="navbar" style={styleObj}>
@@ -302,7 +304,7 @@ function ProductList({ onHomeClick }) {
                             {/* Display other plant details like description and cost */}
                             <div className="product-description">{plant.description}</div> {/* Display plant description */}
                             <div className="product-cost">${plant.cost}</div> {/* Display plant cost */}
-                            { !addedToCart ? ( 
+                            { !plant.addedToCart ? ( 
                                 <button
                                     className="product-button"
                                     onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
@@ -311,8 +313,8 @@ function ProductList({ onHomeClick }) {
                                 </button>) : (
                                 <button
                                     className="product-button"
-                                    color="grey" // Disabled and grayed out when product added to cart
-                                >Added to Cart</button>
+                                    style={{ color: 'grey' }} // Disabled and grayed out when product added to cart
+                                >Added to Cart </button>
                             )}
                             </div>
                         ))}
