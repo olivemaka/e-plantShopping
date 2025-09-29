@@ -6,6 +6,11 @@ import './CartItem.css';
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
+  //const CartItems = useSelector(state => state.cart);
+
+  const calculateTotalQuantity = () => {
+    //return CartItems ? CartItems.reduce((total, item) => total + item.quantity, 0) : 0;
+  };
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
@@ -48,7 +53,8 @@ const CartItem = ({ onContinueShopping }) => {
 
   return (
     <div className="cart-container">
-      <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
+      <h2 style={{ color: 'black' }}>Total Cart Quantity: ${calculateTotalQuantity()}</h2>
+      <h3 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h3>
       <div>
         {cart.map(item => (
           <div className="cart-item" key={item.name}>
