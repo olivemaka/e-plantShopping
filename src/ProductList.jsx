@@ -302,12 +302,18 @@ function ProductList({ onHomeClick }) {
                             {/* Display other plant details like description and cost */}
                             <div className="product-description">{plant.description}</div> {/* Display plant description */}
                             <div className="product-cost">${plant.cost}</div> {/* Display plant cost */}
-                            <button
-                                className="product-button"
-                                onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
-                            >
+                            { !addedToCart ? ( 
+                                <button
+                                    className="product-button"
+                                    onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
+                                >
                                 Add to Cart
-                            </button>
+                                </button>) : (
+                                <button
+                                    className="product-button"
+                                    color="grey" // Disabled and grayed out when product added to cart
+                                >Added to Cart</button>
+                            )}
                             </div>
                         ))}
                         </div>
